@@ -51,7 +51,9 @@
 					        </p:column>
 					
 					        <p:column headerText="Data da Consulta">
-					            <h:outputText value="#{consult.date}"/>
+					            <h:outputText value="#{consult.date}">
+					            	<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					            </h:outputText>
 					        </p:column>
 					    </p:dataTable>
 					</div>

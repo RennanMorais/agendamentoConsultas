@@ -1,7 +1,7 @@
 package com.nttdata.consultas;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,38 +21,43 @@ public class ConsultasBean {
 	private String address;;
 	private Medic medic;
 	private List<Medic> medicList = new ArrayList<Medic>();
-	private List<String> medicSpeciality = new ArrayList<String>();
+	private List<String> medicNameList = new ArrayList<String>();
 	private List<String> medicAddress = new ArrayList<String>();
-	private LocalDate date;
+	private Date date;
 	private Consult consult;
 	private List<Consult> consultList = new ArrayList<Consult>();
 
+	//Construtor para preenchimento automatico do field de médicos
 	public ConsultasBean() {
-		medic = new Medic("Jose", "Cardiologista", "Rua de Teste 1");
+		medic = new Medic("Dr. Jose", "Cardiologista", "Rua de Teste 1");
 		medicList.add(medic);
 
-		medic = new Medic("Pedro", "Ortopedista", "Rua de Teste 2");
+		medic = new Medic("Dr. Pedro", "Ortopedista", "Rua de Teste 2");
 		medicList.add(medic);
 
-		medic = new Medic("Joao", "Oftalmologista", "Rua de Teste 3");
+		medic = new Medic("Dr. Joao", "Oftalmologista", "Rua de Teste 3");
+		medicList.add(medic);
+		
+		medic = new Medic("Dr. Felipe", "Odontologista", "Rua de Teste 4");
 		medicList.add(medic);
 	}
 
+	//Alterar field de acordo com o médico selecionado
 	public void alterarCampos(ValueChangeEvent e) {
 
-		medicSpeciality.clear();
+		medicNameList.clear();
 		medicAddress.clear();
 
 		for (int i = 0; i < medicList.size(); i++) {
-			if (medicList.get(i).getName().equalsIgnoreCase((String) e.getNewValue())) {
-				medicSpeciality.add(medicList.get(i).getSpeciality());
+			if (medicList.get(i).getSpeciality().equalsIgnoreCase((String) e.getNewValue())) {
+				medicNameList.add(medicList.get(i).getName());
 				medicAddress.add(medicList.get(i).getAddress());
 			}
 		}
 
 	}
 
-	public void salvarConsulta() {
+	public String salvarConsulta() {
 		consult = new Consult();
 
 		consult.setPatient(name);
@@ -63,6 +68,7 @@ public class ConsultasBean {
 
 		consultList.add(consult);
 		showMessage();
+		return "home.xhtml";
 	}
 
 	public void showMessage() {
@@ -95,11 +101,11 @@ public class ConsultasBean {
 		this.medicList = medicList;
 	}
 
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -119,12 +125,12 @@ public class ConsultasBean {
 		this.consultList = consultList;
 	}
 
-	public List<String> getMedicSpeciality() {
-		return medicSpeciality;
+	public List<String> getMedicNameList() {
+		return medicNameList;
 	}
 
-	public void setMedicSpeciality(List<String> medicSpeciality) {
-		this.medicSpeciality = medicSpeciality;
+	public void setMedicNameList(List<String> medicNameList) {
+		this.medicNameList = medicNameList;
 	}
 
 	public List<String> getMedicAddress() {

@@ -26,18 +26,19 @@
 	     		<div class="input-group mb-3">
 	     			<h:outputLabel styleClass="input-group-text" value="Médico"/>
 	     			<p:selectOneMenu immediate="true" valueChangeListener="#{consultasBean.alterarCampos}" value="#{consultasBean.medicName}" styleClass="form-control">
-	                    <f:selectItem itemValue="" itemLabel="Selecionar Médico"/> 
-	                    <f:selectItem itemValue="#{consultasBean.medicList[0].name}" itemLabel="#{consultasBean.medicList[0].name}"/>
-	                    <f:selectItem itemValue="#{consultasBean.medicList[1].name}" itemLabel="#{consultasBean.medicList[1].name}"/>
-	                    <f:selectItem itemValue="#{consultasBean.medicList[2].name}" itemLabel="#{consultasBean.medicList[2].name}"/>
-	                    <p:ajax update="specility, address"></p:ajax>
+	                    <f:selectItem itemValue="" itemLabel="Selecionar Especialidade"/> 
+	                    <f:selectItem itemValue="#{consultasBean.medicList[0].speciality}" itemLabel="#{consultasBean.medicList[0].speciality}"/>
+	                    <f:selectItem itemValue="#{consultasBean.medicList[1].speciality}" itemLabel="#{consultasBean.medicList[1].speciality}"/>
+	                    <f:selectItem itemValue="#{consultasBean.medicList[2].speciality}" itemLabel="#{consultasBean.medicList[2].speciality}"/>
+	                    <f:selectItem itemValue="#{consultasBean.medicList[3].speciality}" itemLabel="#{consultasBean.medicList[3].speciality}"/>
+	                    <p:ajax update="medic, address"></p:ajax>
 	                </p:selectOneMenu>
 	     		</div>
 	     		<div class="input-group mb-3">
 	     			<h:outputLabel styleClass="input-group-text" value="Especialidade"/>
-	     			<p:selectOneMenu id="specility" styleClass="form-control" value="#{consultasBean.speciality}">
-	     				<f:selectItem itemValue="" itemLabel="Selecionar Especialidade"/>
-	                    <f:selectItems value="#{consultasBean.medicSpeciality}"/>
+	     			<p:selectOneMenu id="medic" styleClass="form-control" value="#{consultasBean.speciality}">
+	     				<f:selectItem itemValue="" itemLabel="Selecionar Médico"/>
+	                    <f:selectItems value="#{consultasBean.medicNameList}"/>
 	                </p:selectOneMenu>
 	     		</div>
 	     		<div class="input-group mb-3">

@@ -1,6 +1,6 @@
 package com.nttdata.consultas.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Consult {
 
@@ -8,7 +8,7 @@ public class Consult {
 	private String medic;
 	private String speciality;
 	private String address;
-	private LocalDate date;
+	private Date date;
 
 	public String getPatient() {
 		return patient;
@@ -42,11 +42,11 @@ public class Consult {
 		this.address = address;
 	}
 
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
